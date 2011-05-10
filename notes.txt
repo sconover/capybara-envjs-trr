@@ -1,0 +1,9 @@
+gem install therubyracer
+touch local_settings.js
+ruby -rrubygems envjs/rubyracer.rb envjs/rubyracer.js ~/foo.js 
+
+foo.js:
+  console.log(window, document, "hello")
+  Ruby.puts(Ruby.$PROGRAM_NAME)
+
+any other capybara shared specs that are interesting?
