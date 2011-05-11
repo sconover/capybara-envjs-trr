@@ -63,8 +63,10 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.0)
+  capybara (~> 0.4.0)
   capybara-envjs-trr!
   rack-test (>= 0.5.4)
   rspec (~> 2.0)
   sinatra (~> 1.0)
+  therubyracer (>= 0.8.1)
   xpath!
