@@ -10,19 +10,19 @@ describe Capybara::Driver::EnvjsTrr do
   end
 
   describe '#driver' do
-    it "should be an envjs driver" do
+    xit "should be an envjs driver" do
       @session.driver.should be_an_instance_of(Capybara::Driver::EnvjsTrr)
     end
   end
 
   describe '#mode' do
-    it "should remember the mode" do
+    xit "should remember the mode" do
       @session.mode.should == :envjs_trr
     end
   end
 
-  it_should_behave_like "session"
-  it_should_behave_like "session with javascript support"
-  it_should_behave_like "session with headers support"
-  it_should_behave_like "session with status code support"
+  # it_should_behave_like "session"
+  # it_should_behave_like "session with javascript support"
+  # it_should_behave_like "session with headers support"
+  # it_should_behave_like "session with status code support"
 end

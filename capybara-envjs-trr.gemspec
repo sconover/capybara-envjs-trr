@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.summary = "Capybara driver for envjs + therubyracer"
 
   s.add_runtime_dependency("capybara", "~> 0.4.0")
-  # s.add_runtime_dependency("envjs", ">= 0.3.7")
+  s.add_runtime_dependency("therubyracer", ">= 0.8.1")
 
   s.add_development_dependency("bundler", "~> 1.0")
   s.add_development_dependency("rspec", "~> 2.0")

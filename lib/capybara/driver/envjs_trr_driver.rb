@@ -246,11 +246,11 @@ class Capybara::Driver::EnvjsTrr < Capybara::Driver::Base
   end
 
   def visit(path)
-    # as_url = URI.parse path
-    # base = URI.parse app_host
-    # path = (base + as_url).to_s
-    # # p path
-    # browser["window"].location.href = path
+    as_url = URI.parse path
+    base = URI.parse app_host
+    path = (base + as_url).to_s
+    # p path
+    browser["window"].location.href = path
   end
 
   def current_url
