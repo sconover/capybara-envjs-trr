@@ -1391,8 +1391,9 @@ Envjs.exchangeHTMLDocument = function(doc, text, url) {
         //doc.removeEventListener('*');
         
         log.debug('parsing document for window exchange %s', url);
-        HTMLParser.parseDocument(text, doc);
         
+        HTMLParser.parseDocument(text, doc);
+
         log.debug('finsihed parsing document for window exchange %s', url);
         //if this document is inside a frame make sure to trigger
         //a new load event on the frame

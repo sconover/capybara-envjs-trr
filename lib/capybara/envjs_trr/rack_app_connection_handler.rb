@@ -8,15 +8,11 @@ module Capybara
       end
   
       def connect(host, port)
-        p 1
-        p host
         # Net::HTTP.start(host, port)
         return "fake connection"
       end
 
       def request(httpMethod, path)
-        p 2
-        p path
         # case httpMethod
         # when "GET" then return Net::HTTP::Get.new(path) 
         # when "PUT" then return Net::HTTP::Put.new(path) 
@@ -25,11 +21,10 @@ module Capybara
         # when "DELETE" then return Net::HTTP::Delete.new(path)
         # else return nil
         # end
+        return {"method" => httpMethod, "path" => path}
       end
 
       def go(connection, request, headers, data)
-        p 3
-        p request
         # headers.each{|key,value| request.add_field(key,value)}
         # response, body = connection.request(request, data)
         # respheaders = Hash.new
@@ -38,11 +33,15 @@ module Capybara
         # end
         # response['body'] = body
         # [response, respheaders]
-        [{"code" => 200, "message" => "ThisIsTheMessage", "body" => "<html>Hello ZZZ</html>"}, {}]
+        response = @rack_client.get(request["path"])
+        body = response.body.join
+        body = "<html>#{body}</html>" if response.headers["Content-Type"].include?("html") && !body.include?("<html")
+        [{"code" => response.status, 
+          "message" => "", 
+          "body" => body}, response.headers]
       end
 
       def finish(connection)
-        p 4
         # connection.finish if connection.started?
       end
     end
