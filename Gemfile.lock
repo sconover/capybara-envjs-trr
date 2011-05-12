@@ -35,6 +35,8 @@ GEM
     mime-types (1.16)
     nokogiri (1.4.4)
     rack (1.2.2)
+    rack-client (0.3.0)
+      rack (>= 1.0.0)
     rack-test (0.6.0)
       rack (>= 1.0)
     rake (0.8.7)
@@ -65,7 +67,7 @@ DEPENDENCIES
   bundler (~> 1.0)
   capybara (~> 0.4.0)
   capybara-envjs-trr!
-  rack-test (>= 0.5.4)
+  rack-client (>= 0.3.0)
   rspec (~> 2.0)
   sinatra (~> 1.0)
   therubyracer (>= 0.8.1)

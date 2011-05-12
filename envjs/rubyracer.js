@@ -69,4 +69,4 @@ var require = (function() {
 })();
 var __argv__ = Ruby.ARGV;
 require('envjs/platform/rubyracer');
-require('envjs/window');
+require('envjs/window')

@@ -48,39 +48,39 @@ class Runtime
       ct['_eval'] = lambda{|script| ct.eval(script)}
       ct.eval('var t = new Function(); t._eval = __this__._eval;t;') 
     }
-    context['HTTPConnection'] = HTTPConnection.new
+    context['HTTPConnection'] = Server.new
   end
 end
 
-class HTTPConnection
-  def connect(host, port)
-    Net::HTTP.start(host, port)
-  end
-  def request(httpMethod, path)
-    case httpMethod
-    when "GET" then return Net::HTTP::Get.new(path) 
-    when "PUT" then return Net::HTTP::Put.new(path) 
-    when "POST" then return Net::HTTP::Post.new(path)
-    when "HEAD" then return Net::HTTP::Head.new(path)
-    when "DELETE" then return Net::HTTP::Delete.new(path)
-    else return nil
-    end
-  end
-  def go(connection, request, headers, data)
-    headers.each{|key,value| request.add_field(key,value)}
-    response, body = connection.request(request, data)
-    respheaders = Hash.new
-    response.each_header do |name, value|
-      respheaders.store(name, value)
-    end
-    response['body'] = body
-    [response, respheaders]
-  end
-  def finish(connection)
-    connection.finish if connection.started?
-  end
-end
-
+# class HTTPConnection
+#   def connect(host, port)
+#     Net::HTTP.start(host, port)
+#   end
+#   def request(httpMethod, path)
+#     case httpMethod
+#     when "GET" then return Net::HTTP::Get.new(path) 
+#     when "PUT" then return Net::HTTP::Put.new(path) 
+#     when "POST" then return Net::HTTP::Post.new(path)
+#     when "HEAD" then return Net::HTTP::Head.new(path)
+#     when "DELETE" then return Net::HTTP::Delete.new(path)
+#     else return nil
+#     end
+#   end
+#   def go(connection, request, headers, data)
+#     headers.each{|key,value| request.add_field(key,value)}
+#     response, body = connection.request(request, data)
+#     respheaders = Hash.new
+#     response.each_header do |name, value|
+#       respheaders.store(name, value)
+#     end
+#     response['body'] = body
+#     [response, respheaders]
+#   end
+#   def finish(connection)
+#     connection.finish if connection.started?
+#   end
+# end
+# 
 runtime = Runtime.new
 global = runtime.new_context()
 runtime.configure_context(runtime, global)

@@ -6,7 +6,7 @@ describe Capybara::Driver::EnvjsTrr do
     @driver = (driver ||= Capybara::Driver::EnvjsTrr.new(TestApp))
   end
   after do
-    @driver.browser["window"].location = "about:blank"
+    # @driver.browser["window"].location = "about:blank"
   end
 
   it_should_behave_like "driver"

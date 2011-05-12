@@ -148,8 +148,9 @@ class Capybara::Driver::EnvjsTrr < Capybara::Driver::Base
     # (ENV["CAPYBARA_APP_HOST"] || Capybara.app_host || default_url)
   end
 
-  def initialize(app)
-
+  def initialize(backend_rack_app)
+    @browser = Capybara::EnvjsTrr::Browser.new(backend_rack_app)
+    @browser.tick
     # if rack_test?
     #   require 'rack/test'
     #   class << self; self; end.instance_eval do
@@ -246,7 +247,7 @@ class Capybara::Driver::EnvjsTrr < Capybara::Driver::Base
   end
 
   def visit(path)
-    browser
+    @browser.window.eval("window.location.href = '#{path}'")
     nil
     # as_url = URI.parse path
     # base = URI.parse app_host
@@ -264,7 +265,7 @@ class Capybara::Driver::EnvjsTrr < Capybara::Driver::Base
   end
 
   def body
-    # browser["window"].document.xml
+    @browser.window.eval("document.body.innerHTML")
   end
 
   def reset!

@@ -1043,7 +1043,7 @@ Envjs.tick = function(){
     }
         
     Envjs.emit('tick', Date.now());
-    Envjs.sleep(4);
+    // Envjs.sleep(4);
 };
 
 

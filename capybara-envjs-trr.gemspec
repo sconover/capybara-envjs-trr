@@ -27,6 +27,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency("bundler", "~> 1.0")
   s.add_development_dependency("rspec", "~> 2.0")
-  s.add_development_dependency("rack-test", ">= 0.5.4")
+  s.add_development_dependency("rack-client", ">= 0.3.0")
   s.add_development_dependency("sinatra", "~> 1.0")
 end

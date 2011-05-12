@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'capybara/envjs_trr'
-require 'capybara/envjs_trr/envjs_rubyracer'
 require 'capybara/envjs_trr/browser'
  
 # spec_dir = nil

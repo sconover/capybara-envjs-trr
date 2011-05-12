@@ -852,7 +852,7 @@ setTimeout(function(){
 
 
 //console.log('starting Envjs.eventLoop');
-Envjs.eventLoop();
+//Envjs.eventLoop();
 
 /**
  * @author john resig & the envjs team

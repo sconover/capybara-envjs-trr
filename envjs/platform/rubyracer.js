@@ -11,7 +11,7 @@ Ruby.ARGV.shift();
 Envjs.argv = Ruby.ARGV;
 
 Envjs.exit = function(){ 
-  Ruby.Process['exit!'](); 
+  // Ruby.Process['exit!'](); 
 };
 
 /*
@@ -226,13 +226,8 @@ Envjs.connection = function(xhr, responseHandler, data){
         responseXML,
         i;
        
-    if ( /^file\:/.test(url) ) {
-	    log.debug('establishing file connection');
-        Envjs.localXHR(url, xhr, connection, data);
-    } else {
 	    log.debug('establishing http native ruby connection %s', xhr.url);
 		try{
-			
 	        connection = HTTPConnection.connect(
 				urlparts.hostname,
 				Number(urlparts.port||80)
@@ -268,7 +263,6 @@ Envjs.connection = function(xhr, responseHandler, data){
 			}
 			connection = null;
 		}
-    }
 
     if(connection){
 		log.debug('loading response from native ruby connection');
