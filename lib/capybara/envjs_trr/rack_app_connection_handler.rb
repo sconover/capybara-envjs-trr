@@ -33,12 +33,18 @@ module Capybara
         # end
         # response['body'] = body
         # [response, respheaders]
-        response = @rack_client.get(request["path"])
-        body = response.body.join
-        body = "<html>#{body}</html>" if response.headers["Content-Type"].include?("html") && !body.include?("<html")
-        [{"code" => response.status, 
-          "message" => "", 
-          "body" => body}, response.headers]
+        if (request["path"]=="about:blank")
+          [{"code" => 200, "message" => "", "body" => ""}, {}]
+        else
+          response = @rack_client.get(request["path"])
+          body = response.body.join
+          body = "<html>#{body}</html>" if response.headers["Content-Type"].include?("html") && !body.include?("<html")
+          # puts body + "\n"
+          [{"code" => response.status, 
+            "message" => "", 
+            "body" => body}, response.headers]
+        end
+        
       end
 
       def finish(connection)

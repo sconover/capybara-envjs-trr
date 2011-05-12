@@ -1,12 +1,12 @@
 require File.expand_path('../spec_helper', File.dirname(__FILE__))
 
 describe Capybara::Driver::EnvjsTrr do
-  driver = nil
-  before do
-    @driver = (driver ||= Capybara::Driver::EnvjsTrr.new(TestApp))
+
+  before(:all) do
+    @driver = Capybara::Driver::EnvjsTrr.new(TestApp)
   end
   after do
-    # @driver.browser["window"].location = "about:blank"
+    # @driver.browser.window.eval("window.location.href='about:blank'")
   end
 
   it_should_behave_like "driver"

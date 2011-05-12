@@ -247,6 +247,7 @@ class Capybara::Driver::EnvjsTrr < Capybara::Driver::Base
   end
 
   def visit(path)
+    p path
     @browser.window.eval("window.location.href = '#{path}'")
     nil
     # as_url = URI.parse path
@@ -257,7 +258,7 @@ class Capybara::Driver::EnvjsTrr < Capybara::Driver::Base
   end
 
   def current_url
-    # browser["window"].location.href
+    @browser.window.eval("window.location.href")
   end
 
   def source
@@ -291,6 +292,14 @@ class Capybara::Driver::EnvjsTrr < Capybara::Driver::Base
   end
 
   def find(selector)
+    # p body
+    p selector
+#    p @browser.window.eval("document.innerHTML")
+    p @browser.window.eval("document.evaluate('//p', document).iterateNext().outerHTML").to_s
+    # p @browser.window.eval("document.evaluate('#{selector}', document).iterateNext()").to_s
+    
+    # p @browser.window.eval("document.evaluate('#{selector}', document, null, XPathResult.ANY_TYPE, null).results.stringValue()").to_s
+    # p @browser.window.eval("document.evaluate('#{selector}', window).results.value")
     # window = browser["window"]
     # null = browser["null"]
     # type = window["XPathResult"]["ANY_TYPE"]

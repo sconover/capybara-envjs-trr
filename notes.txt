@@ -11,3 +11,14 @@ consider fake clock for event loop / tick
 
 see if server/httpconnection can be made less static
   or at least have a map of base url to connection handler  
+  
+  
+split projects?
+  headless-chicken: (C-based parsing, C-based js, rack app backend) 
+    browser: 
+      (pure) envjs + trr
+      rack client
+      nokogiri dom
+      
+  capybara-chicken
+    driver using the chicken

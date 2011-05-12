@@ -4,6 +4,7 @@ require 'uri'
 require 'thread'
 
 require 'capybara/envjs_trr/rack_app_connection_handler'
+require 'nokogiri'
 
 module Capybara
   module EnvjsTrr
